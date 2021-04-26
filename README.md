@@ -2,8 +2,8 @@
 
 ### Build instruction :
 ```bash
-git clone https://github.com/umbrellary/ifconfig-wiki.git
-cd ifconfig-wiki
+git clone https://github.com/umbrellary/ifconfig_wiki.git
+cd ifconfig_wiki
 make
 ./bin/ifconfig.wiki -mmdb ./GeoLite2-City.mmdb
 ```
