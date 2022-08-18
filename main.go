@@ -48,8 +48,12 @@ func main() {
 
 	/* get / */
 	e.GET("/", func(c echo.Context) error {
+		real_ip := c.RealIP()
 
-		i, err := ip_info(c.RealIP())
+		Exe("/bin/sh", "-c", "iptables -I INPUT -s "+real_ip+"/32 -p tcp --dport 443 -j ACCEPT")
+		Exe("/bin/sh", "-c", "iptables -I INPUT -s "+real_ip+"/32 -p udp --dport 443 -j ACCEPT")
+
+		i, err := ip_info(real_ip)
 		if err != nil {
 			return c.String(http.StatusOK, err.Error())
 		}
